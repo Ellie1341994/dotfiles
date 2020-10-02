@@ -2,13 +2,16 @@
 " To know vim internal key code of a key type 'Ctrl + k + theKey'
 "
 " My configurations
+set expandtab
+set tabstop=4
 set nocompatible
 set number
 set showcmd
-set shiftwidth=2
+set shiftwidth=4
 set title
 set colorcolumn=69 " Ideal amount of words per line 
 let g:sql_type_default = 'mysql'
+let g:user_emmet_install_global = 1
 
 nnoremap <Right> :bn<CR> 
 nnoremap <Left> :bp<CR>
