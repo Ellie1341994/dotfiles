@@ -10,6 +10,10 @@ set showcmd
 set shiftwidth=4
 set title
 set colorcolumn=69 " Ideal amount of words per line 
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+
 let g:sql_type_default = 'mysql'
 let g:user_emmet_install_global = 1
 
