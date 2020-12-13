@@ -1,8 +1,10 @@
 " Notes:
+" Last configuration added code is #1
 " To know vim internal key code of a key type 'Ctrl + k + theKey'
 "
 " My configurations
 set expandtab
+set notermguicolors
 set tabstop=4
 set nocompatible
 set number
@@ -17,11 +19,16 @@ set undodir=~/.vim/undo//
 let g:sql_type_default = 'mysql'
 let g:user_emmet_install_global = 1
 
+packadd! matchit
+
 nnoremap <Right> :bn<CR> 
 nnoremap <Left> :bp<CR>
 nnoremap <S-TAB> :tabprevious<CR>
 nnoremap <TAB> :tabnext<CR>"
-"	
+
+" #1
+autocmd TextChanged,TextChangedI <buffer> silent write
+
 " Plugin Configuration
 execute pathogen#infect()
 syntax on
