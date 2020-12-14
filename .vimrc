@@ -27,7 +27,7 @@ nnoremap <S-TAB> :tabprevious<CR>
 nnoremap <TAB> :tabnext<CR>"
 
 " #1
-autocmd TextChanged,TextChangedI <buffer> silent write
+autocmd TextChanged,TextChangedI * silent write
 
 " Plugin Configuration
 execute pathogen#infect()
