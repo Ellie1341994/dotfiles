@@ -1,5 +1,5 @@
 " Notes:
-" Last configuration added code is #1
+" Last configuration added code is #2
 " To know vim internal key code of a key type 'Ctrl + k + theKey'
 "
 " My configurations
@@ -15,6 +15,8 @@ set colorcolumn=69 " Ideal amount of words per line
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
+" #2
+set smarttab
 
 let g:sql_type_default = 'mysql'
 let g:user_emmet_install_global = 1
