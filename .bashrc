@@ -1,3 +1,10 @@
+#Extras
+# gsettings set org.gnome.desktop.background picture-uri ""
+# gsettings set org.gnome.desktop.background primary-color '#000000'
+
+# My own configurations
+export TERM=xterm-256color # This option makes italics work correctly
+                           #  see https://github.com/neovim/neovim/issues/3461
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples

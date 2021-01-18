@@ -1,10 +1,14 @@
+" Vim-Polyglot Syntax Options
+let g:polyglot_disabled = ['autoindent', 'sensible', 'markwodn']
+let g:python_highlight_all = 1
+
 " Notes:
 " Last configuration added code is #2
 " To know vim internal key code of a key type 'Ctrl + k + theKey'
 "
 " My configurations
 set expandtab
-set notermguicolors
+"set notermguicolors
 set tabstop=4
 set nocompatible
 set number
@@ -21,6 +25,8 @@ set smarttab
 let g:sql_type_default = 'mysql'
 let g:user_emmet_install_global = 1
 
+
+" Optional PlugIns
 packadd! matchit
 
 nnoremap <Right> :bn<CR> 
@@ -28,25 +34,51 @@ nnoremap <Left> :bp<CR>
 nnoremap <S-TAB> :tabprevious<CR>
 nnoremap <TAB> :tabnext<CR>"
 
-" #1
+" #1 Autowrite
 autocmd TextChanged,TextChangedI * silent write
 
 " Plugin Configuration
 execute pathogen#infect()
-syntax on
+"syntax on
 filetype plugin indent on
 
 " A.L.E Configuration
 let g:ale_disable_lsp = 1
 
 " Colorscheme
-autocmd vimenter * colorscheme gruvbox
-set background=dark    " Setting dark mode
+" -----------
 
+" Important!!
+if exists('+termguicolors')
+    "The following options enable True Colors for Vim
+    "https://github.com/tmux/tmux/issues/1246
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
+endif
 
+set background=dark
 
-" Coc.Vim Standard Configuration
+" Toggle italics
+let g:gruvbox_material_enable_italic = 1
+let g:gruvbox_material_disable_italic_comment = 1
+" Airline Options
+let g:airline_theme = 'gruvbox_material'
+" Other options
+let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_palette = 'original'
+colorscheme gruvbox-material
 
+" Custom Syntax options on top of  Vim-Polyglot
+highlight! link Function Yellow
+highlight! link Include Keyword 
+highlight! link Include Keyword 
+highlight! link pythonFunction Yellow 
+highlight! link pythonBuiltinFunc Yellow 
+highlight! link pythonImport Keyword 
+highlight! link pythonDottedName Yellow 
+
+" Coc.Vim default Configuration
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -55,7 +87,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -213,3 +245,4 @@ endfunction
 
 " Use C to open coc config
 call SetupCommandAbbrs('C', 'CocConfig')
+
