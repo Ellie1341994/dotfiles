@@ -39,8 +39,6 @@ autocmd TextChanged,TextChangedI * silent write
 
 " Plugin Configuration
 execute pathogen#infect()
-"syntax on
-filetype plugin indent on
 
 " A.L.E Configuration
 let g:ale_disable_lsp = 1
@@ -70,13 +68,97 @@ let g:gruvbox_material_palette = 'original'
 colorscheme gruvbox-material
 
 " Custom Syntax options on top of  Vim-Polyglot
+" BuiltIn groups
+highlight! Identifier cterm=NONE ctermfg=145 guifg=NONE
+highlight! String ctermfg=222 guifg=NONE 
+highlight! Number ctermfg=67 guifg=NONE
+highlight! link Define Keyword
+highlight! link Float Number 
+highlight! link PreProc cleared
+highlight! link Character String
+highlight! link PurpleItalic Purple
 highlight! link Function Yellow
 highlight! link Include Keyword 
-highlight! link Include Keyword 
+highlight! link Operator Orange 
+highlight! link Boolean Constant 
+highlight! link Constant Keyword
+" Language specific
+" Python
+highlight! link pythonOperator Orange 
+highlight! link pythonDecorator Orange 
 highlight! link pythonFunction Yellow 
 highlight! link pythonBuiltinFunc Yellow 
 highlight! link pythonImport Keyword 
 highlight! link pythonDottedName Yellow 
+"highlight! link pythonBuiltintType Red 
+"highlight! link pythonTodo Red 
+"highlight! link pythonExceptions Red 
+"highlight! link pythonExClass Red 
+highlight! link pythonNone Constant
+" HTML
+highlight! link htmlEndTag cleared
+highlight! link htmlTag cleared
+highlight! htmlArg ctermfg=101
+" JavaScript
+" Groups
+highlight! jsObjectProp ctermfg=NONE guifg=#a86666
+" Links
+highlight! link JavaScriptIdentifier Keyword
+highlight! link jsNull Keyword
+highlight! link jsNan Keyword
+highlight! link jsSuper Keyword
+highlight! link jsThis Keyword
+highlight! link jsPrototype Keyword
+highlight! link jsUndefined Keyword
+highlight! link jsVariableDef cleared
+highlight! link jsArrowFunction Operator
+highlight! link jsArrowFuncArgs cleared
+highlight! link javascriptFuncArg cleared
+highlight! link javascriptVariable Keyword
+highlight! link javascriptArrowFunc Operator
+highlight! link javascriptMethod Function
+highlight! link jsFuncArgs cleared
+highlight! link jsClassMethodType Keyword
+highlight! link javascriptOpSymbol Keyword
+highlight! link javascriptOpSymbols Keyword
+highlight! link jsStorageClass Keyword
+highlight! link jsObjectShorthandProp cleared
+highlight! link jsObjectKey cleared
+highlight! link jsObjectKeyString cleared
+highlight! link jsObjectKeyComputed cleared
+highlight! link jsObjectSeparator cleared
+highlight! link jsObjectValue cleared
+highlight! link jsObjectFuncName cleared
+highlight! link jsFunctionKey cleared
+highlight! link jsObjectMethodType cleared
+highlight! link jsObjectStringKey cleared
+highlight! link jsBracket cleared
+highlight! link jsParen cleared
+highlight! link jsParenDecorator cleared
+highlight! link jsParenIfElse cleared
+highlight! link jsParenRepeat cleared
+highlight! link jsParenSwitch cleared
+highlight! link jsParenCatch cleared
+highlight! link jsFuncArgs cleared
+highlight! link jsClassBlock cleared
+highlight! link jsFuncBlock cleared
+highlight! link jsIfElseBlock cleared
+highlight! link jsTryCatchBlock cleared
+highlight! link jsFinallyBlock cleared
+highlight! link jsSwitchBlock cleared
+highlight! link jsRepeatBlock cleared
+highlight! link jsDestructuringBlock cleared
+highlight! link jsDestructuringArray cleared
+highlight! link jsObject cleared
+highlight! link jsBlock cleared
+highlight! link jsModuleGroup cleared
+highlight! link jsSpreadExpression cleared
+highlight! link jsRestExpression cleared
+highlight! link jsTernaryIf cleared
+highlight! link javascriptProp cleared
+highlight! link javascriptMember Purple
+highlight! link jsDecorator Orange
+
 
 " Coc.Vim default Configuration
 " TextEdit might fail if hidden is not set.
