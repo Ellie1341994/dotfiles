@@ -1,6 +1,11 @@
 {
   "diagnostic.displayByAle": true,
   "python.jediEnabled": false,
+  "python.linting.pylintArgs": [
+    //"--load-plugins=pylint_django,pylint_celery", 
+    //"--load-plugins", "pylint_django"
+    //"--load-plugins=pylint_django",
+  ],
   "coc.preferences.rootPatterns": [".venv",".git", ".hg", ".projections.json"],
   "emmet.includeLanguages": {
           "htmldjango": "html"

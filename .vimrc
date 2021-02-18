@@ -1,9 +1,8 @@
-" Vim-Polyglot Syntax Options
+" Vim-Polyglot Syntax Options (must go at the top of vimrc)
 let g:polyglot_disabled = ['autoindent', 'sensible', 'markwodn']
 let g:python_highlight_all = 1
 
 " Notes:
-" Last configuration added code is #2
 " To know vim internal key code of a key type 'Ctrl + k + theKey'
 "
 " My configurations
@@ -15,27 +14,36 @@ set number
 set showcmd
 set shiftwidth=4
 set title
-set colorcolumn=69 " Ideal amount of words per line 
+set colorcolumn=69 " Ideal amount of words per line
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
-" #2
 set smarttab
+let g:autowrite = 1
+" Custom Autowrite
+" autocmd TextChanged,TextChangedI * silent write
 
+" Ale Plugin
 let g:sql_type_default = 'mysql'
-let g:user_emmet_install_global = 1
+let b:ale_fixers = {'javascript': ['prettier', 'eslint'], '*': ['remove_trailing_lines', 'trim_whitespace'] }
+let g:ale_python_auto_pipenv = 1
+let g:ale_python_pylint_auto_pipenv = 1
+" if you don't want linters to run on opening a file
+let g:ale_lint_on_enter = 0
+
+" Emmet Plugin
+let g:ale_fix_on_save = 1
 
 
 " Optional PlugIns
 packadd! matchit
 
-nnoremap <Right> :bn<CR> 
+
+" Custom :next :previos :tabprevious :tabnext
+nnoremap <Right> :bn<CR>
 nnoremap <Left> :bp<CR>
 nnoremap <S-TAB> :tabprevious<CR>
 nnoremap <TAB> :tabnext<CR>"
-
-" #1 Autowrite
-autocmd TextChanged,TextChangedI * silent write
 
 " Plugin Configuration
 execute pathogen#infect()
@@ -70,30 +78,30 @@ colorscheme gruvbox-material
 " Custom Syntax options on top of  Vim-Polyglot
 " BuiltIn groups
 highlight! Identifier cterm=NONE ctermfg=145 guifg=NONE
-highlight! String ctermfg=222 guifg=NONE 
+highlight! String ctermfg=222 guifg=NONE
 highlight! Number ctermfg=67 guifg=NONE
 highlight! link Define Keyword
-highlight! link Float Number 
+highlight! link Float Number
 highlight! link PreProc cleared
 highlight! link Character String
 highlight! link PurpleItalic Purple
 highlight! link Function Yellow
-highlight! link Include Keyword 
-highlight! link Operator Orange 
-highlight! link Boolean Constant 
+highlight! link Include Keyword
+highlight! link Operator Orange
+highlight! link Boolean Constant
 highlight! link Constant Keyword
 " Language specific
 " Python
-highlight! link pythonOperator Orange 
-highlight! link pythonDecorator Orange 
-highlight! link pythonFunction Yellow 
-highlight! link pythonBuiltinFunc Yellow 
-highlight! link pythonImport Keyword 
-highlight! link pythonDottedName Yellow 
-"highlight! link pythonBuiltintType Red 
-"highlight! link pythonTodo Red 
-"highlight! link pythonExceptions Red 
-"highlight! link pythonExClass Red 
+highlight! link pythonOperator Orange
+highlight! link pythonDecorator Orange
+highlight! link pythonFunction Yellow
+highlight! link pythonBuiltinFunc Yellow
+highlight! link pythonImport Keyword
+highlight! link pythonDottedName Yellow
+"highlight! link pythonBuiltintType Red
+"highlight! link pythonTodo Red
+"highlight! link pythonExceptions Red
+"highlight! link pythonExClass Red
 highlight! link pythonNone Constant
 " HTML
 highlight! link htmlEndTag cleared
@@ -328,3 +336,13 @@ endfunction
 " Use C to open coc config
 call SetupCommandAbbrs('C', 'CocConfig')
 
+" Generating Vim help files for Ale ( maybe others too )
+
+" Put these lines at the very end of your vimrc file.
+
+" Load all plugins now.
+" Plugins need to be added to runtimepath before helptags can be generated.
+packloadall
+" Load all of the helptags now, after plugins have been loaded.
+" All messages and errors will be ignored.
+silent! helptags ALL
