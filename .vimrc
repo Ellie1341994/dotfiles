@@ -4,6 +4,7 @@ let g:python_highlight_all = 1
 
 " Notes:
 " To know vim internal key code of a key type 'Ctrl + k + theKey'
+" To write the literal key use ctrl + k + key
 "
 " My configurations
 set expandtab
@@ -20,6 +21,7 @@ set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 set smarttab
 let g:autowrite = 1
+let g:netrw_browse_split = 3
 " Custom Autowrite
 " autocmd TextChanged,TextChangedI * silent write
 
@@ -30,6 +32,8 @@ let g:ale_python_auto_pipenv = 1
 let g:ale_python_pylint_auto_pipenv = 1
 " if you don't want linters to run on opening a file
 let g:ale_lint_on_enter = 0
+
+" https://github.com/neoclide/coc-prettier PlugIns
 
 " Emmet Plugin
 let g:ale_fix_on_save = 1
@@ -45,6 +49,9 @@ nnoremap <Left> :bp<CR>
 nnoremap <S-TAB> :tabprevious<CR>
 nnoremap <TAB> :tabnext<CR>"
 
+" Custom Macro for HTML/JXS that splits multiple inline tag attributes in
+" several lines
+let @a=':.s/\([/]\)\{0,1}>/\r\1>/k:.s/\(\S\)\ \(\S\)/\1\ \r\2/gj=%'
 " Plugin Configuration
 execute pathogen#infect()
 
