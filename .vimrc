@@ -3,55 +3,51 @@ let g:polyglot_disabled = ['autoindent', 'sensible', 'markwodn']
 let g:python_highlight_all = 1
 
 " Notes:
-" To know vim internal key code of a key type 'Ctrl + k + theKey'
 " To write the literal key use ctrl + k + key
 "
 " My configurations
 set expandtab
 "set notermguicolors
-set tabstop=4
+set tabstop=2
 set nocompatible
 set number
 set showcmd
-set shiftwidth=4
+set shiftwidth=2
 set title
 set colorcolumn=69 " Ideal amount of words per line
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 set smarttab
+set background=dark
+set mouse=a
 let g:autowrite = 1
 let g:netrw_browse_split = 3
-" Custom Autowrite
-" autocmd TextChanged,TextChangedI * silent write
-
+" CocPrettier
 " Ale Plugin
 let g:sql_type_default = 'mysql'
-let b:ale_fixers = {'javascript': ['prettier', 'eslint'], '*': ['remove_trailing_lines', 'trim_whitespace'] }
+let g:ale_fixers = {
+            \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+            \   'javascript': ['prettier', 'eslint'],
+            \   'javascriptreact': ['prettier', 'eslint'],
+            \   'typescript': ['prettier', 'eslint'],
+            \   'typescriptreact': ['prettier', 'eslint'],
+            \}
 let g:ale_python_auto_pipenv = 1
 let g:ale_python_pylint_auto_pipenv = 1
 " if you don't want linters to run on opening a file
 let g:ale_lint_on_enter = 0
-
-" https://github.com/neoclide/coc-prettier PlugIns
-
-" Emmet Plugin
 let g:ale_fix_on_save = 1
-
-
+" https://github.com/neoclide/coc-prettier PlugIns
+" Emmet Plugin
 " Optional PlugIns
 packadd! matchit
-
-
 " Custom :next :previos :tabprevious :tabnext
 nnoremap <Right> :bn<CR>
 nnoremap <Left> :bp<CR>
 nnoremap <S-TAB> :tabprevious<CR>
 nnoremap <TAB> :tabnext<CR>"
 
-" Custom Macro for HTML/JXS that splits multiple inline tag attributes in
-" several lines
-let @a=':.s/\([/]\)\{0,1}>/\r\1>/k:.s/\(\S\)\ \(\S\)/\1\ \r\2/gj=%'
 " Plugin Configuration
 execute pathogen#infect()
 
@@ -70,10 +66,8 @@ if exists('+termguicolors')
     set termguicolors
 endif
 
-set background=dark
-
 " Toggle italics
-let g:gruvbox_material_enable_italic = 1
+let g:gruvbox_material_enable_italic = 0
 let g:gruvbox_material_disable_italic_comment = 1
 " Airline Options
 let g:airline_theme = 'gruvbox_material'
@@ -82,99 +76,19 @@ let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_palette = 'original'
 colorscheme gruvbox-material
 
-" Custom Syntax options on top of  Vim-Polyglot
-" BuiltIn groups
-highlight! Identifier cterm=NONE ctermfg=145 guifg=NONE
-highlight! String ctermfg=222 guifg=NONE
-highlight! Number ctermfg=67 guifg=NONE
-highlight! link Define Keyword
-highlight! link Float Number
-highlight! link PreProc cleared
-highlight! link Character String
-highlight! link PurpleItalic Purple
-highlight! link Function Yellow
-highlight! link Include Keyword
-highlight! link Operator Orange
-highlight! link Boolean Constant
-highlight! link Constant Keyword
-" Language specific
-" Python
-highlight! link pythonOperator Orange
-highlight! link pythonDecorator Orange
-highlight! link pythonFunction Yellow
-highlight! link pythonBuiltinFunc Yellow
-highlight! link pythonImport Keyword
-highlight! link pythonDottedName Yellow
-"highlight! link pythonBuiltintType Red
-"highlight! link pythonTodo Red
-"highlight! link pythonExceptions Red
-"highlight! link pythonExClass Red
-highlight! link pythonNone Constant
-" HTML
-highlight! link htmlEndTag cleared
-highlight! link htmlTag cleared
-highlight! htmlArg ctermfg=101
-" JavaScript
-" Groups
-highlight! jsObjectProp ctermfg=NONE guifg=#a86666
-" Links
-highlight! link JavaScriptIdentifier Keyword
-highlight! link jsNull Keyword
-highlight! link jsNan Keyword
-highlight! link jsSuper Keyword
-highlight! link jsThis Keyword
-highlight! link jsPrototype Keyword
-highlight! link jsUndefined Keyword
-highlight! link jsVariableDef cleared
-highlight! link jsArrowFunction Operator
-highlight! link jsArrowFuncArgs cleared
-highlight! link javascriptFuncArg cleared
-highlight! link javascriptVariable Keyword
-highlight! link javascriptArrowFunc Operator
-highlight! link javascriptMethod Function
-highlight! link jsFuncArgs cleared
-highlight! link jsClassMethodType Keyword
-highlight! link javascriptOpSymbol Keyword
-highlight! link javascriptOpSymbols Keyword
-highlight! link jsStorageClass Keyword
-highlight! link jsObjectShorthandProp cleared
-highlight! link jsObjectKey cleared
-highlight! link jsObjectKeyString cleared
-highlight! link jsObjectKeyComputed cleared
-highlight! link jsObjectSeparator cleared
-highlight! link jsObjectValue cleared
-highlight! link jsObjectFuncName cleared
-highlight! link jsFunctionKey cleared
-highlight! link jsObjectMethodType cleared
-highlight! link jsObjectStringKey cleared
-highlight! link jsBracket cleared
-highlight! link jsParen cleared
-highlight! link jsParenDecorator cleared
-highlight! link jsParenIfElse cleared
-highlight! link jsParenRepeat cleared
-highlight! link jsParenSwitch cleared
-highlight! link jsParenCatch cleared
-highlight! link jsFuncArgs cleared
-highlight! link jsClassBlock cleared
-highlight! link jsFuncBlock cleared
-highlight! link jsIfElseBlock cleared
-highlight! link jsTryCatchBlock cleared
-highlight! link jsFinallyBlock cleared
-highlight! link jsSwitchBlock cleared
-highlight! link jsRepeatBlock cleared
-highlight! link jsDestructuringBlock cleared
-highlight! link jsDestructuringArray cleared
-highlight! link jsObject cleared
-highlight! link jsBlock cleared
-highlight! link jsModuleGroup cleared
-highlight! link jsSpreadExpression cleared
-highlight! link jsRestExpression cleared
-highlight! link jsTernaryIf cleared
-highlight! link javascriptProp cleared
-highlight! link javascriptMember Purple
-highlight! link jsDecorator Orange
-
-
+let g:coc_global_extensions = ['coc-git',
+      \'coc-sh',
+      \'coc-emmet',
+      \'coc-html',
+      \'coc-python',
+      \'coc-css',
+ \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint',
+  \ 'coc-prettier',
+  \ 'coc-json',
+  \]
 " Coc.Vim default Configuration
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -184,7 +98,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=1
+set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -292,6 +206,16 @@ xmap ic <Plug>(coc-classobj-i)
 omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
