@@ -28,10 +28,13 @@ let g:netrw_browse_split = 3
 let g:sql_type_default = 'mysql'
 let g:ale_fixers = {
             \  '*': ['remove_trailing_lines', 'trim_whitespace'],
-            \   'javascript': ['prettier', 'eslint'],
-            \   'javascriptreact': ['prettier', 'eslint'],
-            \   'typescript': ['prettier', 'eslint'],
-            \   'typescriptreact': ['prettier', 'eslint'],
+            \   'javascript': ['prettier'],
+            \   'javascriptreact': ['prettier',],
+            \   'typescript': ['prettier', ],
+            \   'typescriptreact': ['prettier', ],
+            \   'scss': ['prettier'],
+            \   'css': ['prettier'],
+            \   'html': ['prettier'],
             \}
 let g:ale_python_auto_pipenv = 1
 let g:ale_python_pylint_auto_pipenv = 1
@@ -82,6 +85,7 @@ let g:coc_global_extensions = ['coc-git',
       \'coc-html',
       \'coc-python',
       \'coc-css',
+      \'coc-clangd',
  \ 'coc-snippets',
   \ 'coc-pairs',
   \ 'coc-tsserver',
